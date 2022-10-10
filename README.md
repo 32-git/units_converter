@@ -7,3 +7,10 @@ Always open to improvement in form of new fields and especially new units.
 --> In the case of a unit suggestion, please provide the unit name, symbol and ***exact*** conversion formulas to each of the other units.
 
 --> In the case of a field suggestion, please state its name and some units to consider in that field.
+
+Plans for the project:
+  - [x] Length (units + conversions)
+  - [ ] Area (units + conversions)
+  - [ ] Volume (units + conversions)
+  - [ ] Mass (units + conversions)
+  - [x] Temperature (units + conversions)
