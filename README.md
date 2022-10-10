@@ -1,6 +1,6 @@
 # units_converter
 
-A place to convert units from all the main fields of measurement.
+A place to convert frequently used units from all the main fields of measurement.
 
 Always open to improvement in form of new fields and especially new units. 
 
