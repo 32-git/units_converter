@@ -12,7 +12,8 @@ Plans for the project:
   - [ ] units.py
     - [x] ~~Length (units + conversions)~~
       - [ ] millimeter (mm) & yard (yd)
-    - [ ] Area (units + conversions)
+      - [ ] feet and inches (ft in)
+    - [x] ~~Area (units + conversions)~~
     - [ ] Volume (units + conversions)
     - [ ] Mass (units + conversions)
     - [x] ~~Temperature (units + conversions)~~
