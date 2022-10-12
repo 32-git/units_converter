@@ -1,18 +1,23 @@
 # Map the units to their symbols for easier processing afterwards
 unit_mappings = {
     "Length": {
+        'Millimeter (mm)': 'mm',
         'Centimeter (cm)': 'cm',
         'Meter (m)': 'm',
         'Kilometer (km)': 'km',
         'Inch (in)': 'in',
-        'Foot (ft)': 'ft',
-        'Mile (mi)': 'mi'
+        # 'Foot (ft)': 'ft',
+        # 'Yard (yd)': 'yd',
+        'Mile (mi)': 'mi',
+        # '* Feet and inches (ft in)': 'ft_in'
     },
     "Area": {
         'Square centimeter (cm\u00b2)': 'cm^2',
         'Square meter (m\u00b2)': 'm^2',
         'Square kilometer (km\u00b2)': 'km^2', 
-        'Acre (a)': 'a',  
+        'Square inch (in\u00b2)': 'in^2',
+        'Square foot (ft\u00b2)': 'ft^2',
+        'Acre (ac)': 'ac',  
         'Hectare (ha)': 'ha'
     },
     "Volume": {
@@ -45,60 +50,143 @@ def convert(field, input_unit, output_unit, i): # i is the input value
         "Length": {
             "cm": {
                 'm': i/100,
-                'km': i/100000,
+                'km': i/100_000,
                 'in': i/2.54,
                 'ft': i/30.48,
-                'mi': i/160900,
+                'mi': i/160900
             },
             "m": {
                 'cm': i*100,
                 'km': i/1000,
                 'in': i*39.37,
                 'ft': i*3.280839895,
-                'mi': i/1609,
+                'mi': i/1609
             },
             "km": {
-                'cm': i*100000,
+                'cm': i*100_000,
                 'm': i*1000,
                 'in': i*39370.1,
                 'ft': i*3280.84,
-                'mi': i/1.609,
+                'mi': i/1.609
             },
             "in": {
                 'cm': i*2.54,
                 'm': i/39.37,
                 'km': i/39370.1,
                 'ft': i*30.48,
-                'mi': i/63360,
+                'mi': i/63360
             },
             "ft": {
                 'cm': i*30.48,
                 'm': i*0.3048,
                 'km': i/3280.84,
                 'in': i*12,
-                'mi': i/5280,
+                'mi': i/5280
             },
             "mi": {
                 'cm': i*160934.4,
                 'm': i*1609.344,
                 'km': i*1.609344,
                 'in': i*63360,
-                'ft': i*5280,
+                'ft': i*5280
             }
         },
         "Area": {
-            "cm^2": {
-                'm^2': 1/10000,
+            "m^2": {
+                'km^2': i/1_000_000,
+                'in^2': i*1550.0031,
+                'ft^2': i*10.764,
+                'ac': i/4_046.8564,
+                'ha': i/10_000
+            },
+            "km^2": {
+                'm^2': i*1_000_000,
+                'in^2': i/1_550_003_100,
+                'ft^2': i*10_763_910.4167,
+                'ac': i*247.1054,
+                'ha': i*100 
+            },
+            "in^2": {
+                'm^2': i/1550.0031,
+                'km^2': i/1_550_003_100,
+                'ft^2': i/144,
+                'ac': i/6_272_640,
+                'ha': i/15_500_031
+            },
+            "ft^2": {
+                'm^2': i/10.764,
+                'km^2': i/10_763_910.4167,
+                'in^2': i*144,
+                'ac': i/43_560,
+                'ha': i/107_639.1042,
+            },
+            "ac": {
+                'm^2': i*4_046.8564,
+                'km^2': i/247.1054,
+                'in^2': i*6_272_640,
+                'ft^2': i*43_560,
+                'ha': i/2.4711
+            },
+            "ha": {
+                'm^2': i*10_000,
+                'km^2': i/100,
+                'in^2': i*6_272_640,
+                'ft^2': i*107_639.1042,
+                'ac': i*2.4711, 
             }
         },
         "Volume": {
             "cm^3": {
-                'ml': i*1
+                'm^3': _,
+                'ml': i,
+                'l': i/1000
+            },
+            "m^3": {
+                'cm^3': _,
+                'ml': _,
+                'l': _ 
+            },
+            "ml": {
+                'cm^3': i,
+                'm^3': _,
+                'l': i/1000
+            },
+            "l": {
+                'cm^3': i*1000,
+                'm^3': _,
+                'ml': i*1000
             }
         },
         "Mass": {
             "g": {
-
+                'mg': _,
+                'kg': _,
+                'lbs': _,
+                'oz': _
+            },
+            "mg": {
+                'g': _,
+                'kg': _,
+                'lbs': _,
+                'oz': _
+            },
+            "kg": {
+                'mg': _,
+                'g': _,
+                'lbs': _,
+                'oz': _
+            },
+            "lbs": {
+                'mg': _,
+                'g': _,
+                'kg': _,
+                'oz': _
+            },
+            "oz": {
+                'mg': _,
+                'g': _,
+                'kg': _,
+                'lbs': _
             }
         },
         "Temperature": {
