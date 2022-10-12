@@ -8,7 +8,7 @@ root.geometry("550x400")
 root.configure(bg="#19191a")
 ctk.set_appearance_mode("dark")
 # ----------------------------------------
-font = ("OCR A Extended", -13.75) # font for all dropdowns
+font = ("OCR A Extended", -13.5) # font for all dropdowns
 
 def clear_frame():
     for widget in root.winfo_children():
@@ -20,12 +20,11 @@ def menu():
 
         def values():
             """Define the units that are going to be in the dropdowns."""
-
             if choice == "Length":
                 values = ['--', 'Centimeter (cm)', 'Meter (m)', 'Kilometer (km)', 'Inch (in)', 'Foot (ft)', 'Mile (mi)', '* Feet and inches (ft in)']
             elif choice == "Area":
-                values = ['--', 'Square centimeter (cm\u00b2)', 'Square meter (m\u00b2)', 'Square kilometer (km\u00b2)', 'Acre (a)',  
-                            'Hectare (ha)']
+                values = ['--', 'Square centimeter (cm\u00b2)', 'Square meter (m\u00b2)', 'Square kilometer (km\u00b2)', 'Square inch (in\u00b2)',  
+                            'Square foot (ft\u00b2)', 'Acre (ac)', 'Hectare (ha)']
             elif choice == "Volume":
                 values = ['--', 'Cubic centimeter (cm\u00b3)', 'Cubic meter (m\u00b3)', 'Millileter (ml)', 'Liter (l)']
             elif choice == "Mass":
@@ -41,7 +40,7 @@ def menu():
             root.geometry("650x450")
 
             # Make the title
-            title = ctk.CTkLabel(root, text="Converter", text_font=("Courier", 33, 'bold'), padx=10, pady=7.5, 
+            title = ctk.CTkLabel(root, text=choice, text_font=("Courier", 33, 'bold'), padx=10, pady=7.5, 
                                 borderwidth=1.5, text_color="chartreuse3")
             title.place(relx=0.5, rely=0.15, anchor='center')
 
@@ -49,12 +48,12 @@ def menu():
             values = values()
 
             units_left = ctk.CTkComboBox(master=root, values=values,
-                                        width=200, height=30, corner_radius=10, text_font=("OCR A Extended", -14.5),
+                                        width=220, height=30, corner_radius=10, text_font=("OCR A Extended", -13.75),
                                         text_color="chartreuse3", dropdown_text_font=font, dropdown_text_color="chartreuse3")
             units_left.place(relx=0.25, rely=0.375, anchor='center')
             
             units_right = ctk.CTkComboBox(master=root, values=values,
-                                        width=200, height=30, corner_radius=10, text_font=("OCR A Extended", -14.5),
+                                        width=220, height=30, corner_radius=10, text_font=("OCR A Extended", -13.75),
                                         text_color="chartreuse3", dropdown_text_font=font, dropdown_text_color="chartreuse3")
             units_right.place(relx=0.75, rely=0.375, anchor='center')
 
@@ -66,10 +65,10 @@ def menu():
             units_right.set('--')          
 
             # User input
-            fields.input = ctk.CTkEntry(root, width=200, height=40, corner_radius=10, text_color="chartreuse3", 
+            fields.input = ctk.CTkEntry(root, width=210, height=40, corner_radius=10, text_color="chartreuse3", 
                                         text_font=("Courier New", 12))
             fields.input.place(relx=0.25, rely=0.5, anchor='center')
-            frame = ctk.CTkFrame(root, width=200, height=40, corner_radius=10, fg_color="grey24", border_width=2, 
+            frame = ctk.CTkFrame(root, width=210, height=40, corner_radius=10, fg_color="grey24", border_width=2, 
                                 border_color="grey32")
             frame.place(relx=0.75, rely=0.5, anchor='center')
 
