@@ -23,7 +23,7 @@ def menu():
             if choice == "Length":
                 values = ['--', 'Centimeter (cm)', 'Meter (m)', 'Kilometer (km)', 'Inch (in)', 'Foot (ft)', 'Mile (mi)', '* Feet and inches (ft in)']
             elif choice == "Area":
-                values = ['--', 'Square centimeter (cm\u00b2)', 'Square meter (m\u00b2)', 'Square kilometer (km\u00b2)', 'Square inch (in\u00b2)',  
+                values = ['--', 'Square meter (m\u00b2)', 'Square kilometer (km\u00b2)', 'Square inch (in\u00b2)',  
                             'Square foot (ft\u00b2)', 'Acre (ac)', 'Hectare (ha)']
             elif choice == "Volume":
                 values = ['--', 'Cubic centimeter (cm\u00b3)', 'Cubic meter (m\u00b3)', 'Millileter (ml)', 'Liter (l)']
