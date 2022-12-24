@@ -6,8 +6,7 @@ unit_mappings = {
         'Meter (m)': 'm',
         'Kilometer (km)': 'km',
         'Inch (in)': 'in',
-        # 'Foot (ft)': 'ft',
-        # 'Yard (yd)': 'yd',
+        'Foot (ft)': 'ft',
         'Mile (mi)': 'mi',
         # '* Feet and inches (ft in)': 'ft_in'
     },
@@ -210,12 +209,18 @@ def convert(field, input_unit, output_unit, i): # i is the input value
         # Format the output:
         #  - Larger number: separate it and limit the decimal places.
         #  - Smaller number: allow more decimal places.
-        if number > 0.9999:
-            output = float("{:.2f}".format(number)) # round to 2 decimal places
-            output = '{:,}'.format(output)  # separation every 3 digits  
+        # if number >= 1:
+        if number % 1 == 0:
+            output = '{:,}'.format(int(number)) # integer formatting for whole numbers ()*
         else:
-            output = "{:.4e}".format(number)  # 4 decimal places before scientific notation
+            # output = float("{:.2f}".format(number)) # round to 2 decimal places
+            # output = '{:,}'.format(output)  # * 
+            output = number
+        # else:
+            # output = "{:.4e}".format(number)  # 3 decimal places before scientific notation
         return output
+
+        # *separation every 3 digits 
 
     except KeyError: # if the same unit is selected on both sides
         return "Are you dumb?"
