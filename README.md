@@ -9,6 +9,4 @@ Always open to improvement in form of new fields and especially new units.
 --> In the case of a field suggestion, please state its name and some units to consider in that field.
 
 Plans for the project:
-  - [ ] converter.py
-    - [ ] Back to menu button { (command: clear frame, menu()) }
-    - [ ] Swap units button { command: units_left.set(units_right.get()) }
+  - [ ] feet and inches conversion
