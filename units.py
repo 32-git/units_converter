@@ -207,20 +207,13 @@ def convert(field, input_unit, output_unit, i): # i is the input value
     try:
         number = units[field][input_unit][output_unit]
         # Format the output:
-        #  - Larger number: separate it and limit the decimal places.
-        #  - Smaller number: allow more decimal places.
-        # if number >= 1:
+        #  - Whole number: int formatting (w/o ".0"); 1000 separation with commas.
+        #  - Decimal number: accept Python format.
         if number % 1 == 0:
-            output = '{:,}'.format(int(number)) # integer formatting for whole numbers ()*
+            output = '{:,}'.format(int(number))
         else:
-            # output = float("{:.2f}".format(number)) # round to 2 decimal places
-            # output = '{:,}'.format(output)  # * 
             output = number
-        # else:
-            # output = "{:.4e}".format(number)  # 3 decimal places before scientific notation
         return output
-
-        # *separation every 3 digits 
 
     except KeyError: # if the same unit is selected on both sides
         return "Are you dumb?"

@@ -94,10 +94,13 @@ def menu():
             output.place(relx=0.5, rely=0.5, anchor='center')
 
             def convert():
-                left = units.unit_mappings[choice][units_left.get()]
-                right = units.unit_mappings[choice][units_right.get()]
-                result = units.convert(choice, left, right, fields.input.get())
-                output.configure(text=result)
+                try:
+                    left = units.unit_mappings[choice][units_left.get()]
+                    right = units.unit_mappings[choice][units_right.get()]
+                    result = units.convert(choice, left, right, fields.input.get())
+                    output.configure(text=result)
+                except KeyError:
+                    output.configure(text="Invalid input.")
 
             # Calculate button
             calc = ctk.CTkButton(master=root, width=120, height=32, border_width=2, corner_radius=8, text="Calculate",
