@@ -95,10 +95,21 @@ def menu():
 
             def convert():
                 try:
-                    left = units.unit_mappings[choice][units_left.get()]
-                    right = units.unit_mappings[choice][units_right.get()]
-                    result = units.convert(choice, left, right, fields.input.get())
-                    output.configure(text=result)
+                    # Convert cm (only) to ft_in (not vice versa though)
+                    if units_right.get() == '* Feet and inches (ft in)':
+                        units_left.set('Centimeter (cm)')   # for ft_in input can only be cm
+                        result = units.convert('Length', 'cm', 'ft_in', 
+                                               fields.input.get())
+                        output.configure(text=result)
+                    
+                    elif units_left.get() == '* Feet and inches (ft in)':
+                        output.configure(text="Not possible.")    # conversion from ft_in to cm not possible
+
+                    else:
+                        left = units.unit_mappings[choice][units_left.get()]
+                        right = units.unit_mappings[choice][units_right.get()]
+                        result = units.convert(choice, left, right, fields.input.get())
+                        output.configure(text=result)
                 except KeyError:
                     output.configure(text="Invalid input.")
 

@@ -8,7 +8,7 @@ unit_mappings = {
         'Inch (in)': 'in',
         'Foot (ft)': 'ft',
         'Mile (mi)': 'mi',
-        # '* Feet and inches (ft in)': 'ft_in'
+        '* Feet and inches (ft in)': 'ft_in'
     },
     "Area": {
         'Square meter (m\u00b2)': 'm\u00b2',
@@ -51,7 +51,8 @@ def convert(field, input_unit, output_unit, i): # i is the input value
                 'km': i/100_000,
                 'in': i/2.54,
                 'ft': i/30.48,
-                'mi': i/160900
+                'mi': i/160900,
+                'ft_in': f"{int(i/30.48)} ft {'%.3f'%((i/30.48 % 1) * 12)} in"
             },
             "m": {
                 'cm': i*100,
@@ -71,7 +72,7 @@ def convert(field, input_unit, output_unit, i): # i is the input value
                 'cm': i*2.54,
                 'm': i/39.37,
                 'km': i/39370.1,
-                'ft': i*30.48,
+                'ft': i/12,
                 'mi': i/63360
             },
             "ft": {
@@ -202,18 +203,20 @@ def convert(field, input_unit, output_unit, i): # i is the input value
             }
         },
     }
-    
   
-    try:
-        number = units[field][input_unit][output_unit]
+    # try:
+    number = units[field][input_unit][output_unit]
+    if number == units['Length']['cm']['ft_in']:
+        output = units['Length']['cm']['ft_in']
+    else:        
         # Format the output:
-        #  - Whole number: int formatting (w/o ".0"); 1000 separation with commas.
+        #  - Whole number: int formatting (without ".0"); 1000 separation with commas.
         #  - Decimal number: accept Python format.
         if number % 1 == 0:
             output = '{:,}'.format(int(number))
         else:
             output = number
-        return output
+    return output
 
-    except KeyError: # if the same unit is selected on both sides
-        return "Are you dumb?"
+    # except KeyError: # if the same unit is selected on both sides
+    #     return "Are you dumb?"
