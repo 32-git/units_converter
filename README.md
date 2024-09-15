@@ -11,12 +11,13 @@ The fields of conversion include:
 
 ## Usage
 
-To use this application, simply double-click on the converter.py file.
+Before running the app, be aware to install the packages listed in the requirements.
+
+To use the app, simply navigate to the directory where converter.py is located and run `python converter.py` in cmd.
 
 ## Further Development
 
 Always open to improvement in form of new fields and especially new units. 
 
---> In the case of a unit suggestion, please provide the unit name, symbol and ***exact*** conversion formulas to each of the other units.
-
---> In the case of a field suggestion, please state its name and some units to consider in that field.
+  > In the case of a unit suggestion, please provide the unit name, symbol and ***exact*** conversion formulas to each of the other units.
+  > In the case of a field suggestion, please state its name and some units to consider in that field.
