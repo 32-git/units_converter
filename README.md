@@ -1,6 +1,19 @@
 # units_converter
 
-A place to convert frequently used units from all the main fields of measurement.
+An app to convert frequently used units from all the main fields of measurement.
+
+## Functionalities
+
+The fields of conversion include:
+  - Length
+  - Mass
+  - Temperature
+
+## Usage
+
+To use this application, simply double-click on the converter.py file.
+
+## Further Development
 
 Always open to improvement in form of new fields and especially new units. 
 
