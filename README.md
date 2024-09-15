@@ -6,6 +6,8 @@ An app to convert frequently used units from all the main fields of measurement.
 
 The fields of conversion include:
   - Length
+  - Area
+  - Volume
   - Mass
   - Temperature
 
